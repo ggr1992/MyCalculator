@@ -53,6 +53,10 @@ function App() {
       setDisplay(`${display}0.`);
       return;
     }
+    if (value === "." && /\D$/.test(result)) {
+      setDisplay(`${display}0.`);
+      return;
+    }
     if (display === "" && value === "." && typeof result === "number") {
       setResult("");
       setDisplay("0.");
