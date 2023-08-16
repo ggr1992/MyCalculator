@@ -1,9 +1,14 @@
 import { useState } from "react";
 import "./App.css";
+import { create, all } from "mathjs"
+
+const math = create(all);
 
 function App() {
   let [display, setDisplay] = useState("");
   const [result, setResult] = useState("");
+
+  
 
   const formatNumberWithCommas = (number) => {
     return number.toLocaleString(undefined, { maximumFractionDigits: 20 });
@@ -32,7 +37,7 @@ function App() {
       } else {
         const join = `${result}${display}`;
 
-        setResult(eval(join));
+        setResult(math.evaluate(join));
         setDisplay(value);
         return;
       }
@@ -102,7 +107,7 @@ function App() {
       return;
     }
 
-    setResult(eval(join));
+    setResult(math.evaluate(join));
     setDisplay("");
   };
 
